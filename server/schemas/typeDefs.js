@@ -8,12 +8,19 @@ type User {
     # savedBooks: [bookSchema]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
 type Query{
     users:[User]
+    me:User
 }
 
 type Mutation{
-    addUser(username:String!, email:String!, password: String!): User
+    addUser(username:String!, email:String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
 }
 
   `;
